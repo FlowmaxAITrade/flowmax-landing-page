@@ -1,40 +1,101 @@
-const analystSignals = [
-  { name: "资金费率雷达", signal: "拥挤度升高", tone: "warning" },
-  { name: "OI 动向", signal: "空头减仓", tone: "positive" },
-  { name: "多周期共振", signal: "等待确认", tone: "neutral" },
+const strategies = [
+  {
+    name: "Steady Alpha",
+    type: "稳健保值",
+    status: "WAIT",
+    analysts: "3",
+    assets: "BTC · ETH",
+    pnl: "+12.6%",
+    tone: "gain",
+  },
+  {
+    name: "Trend Navigator",
+    type: "趋势跟踪",
+    status: "LONG",
+    analysts: "2",
+    assets: "BTC · SOL",
+    pnl: "+8.4%",
+    tone: "gain",
+  },
+  {
+    name: "Funding Hedge",
+    type: "套利对冲",
+    status: "HEDGE",
+    analysts: "4",
+    assets: "Crypto",
+    pnl: "+5.7%",
+    tone: "gold",
+  },
 ];
 
-const surfaces = [
+const capabilities = [
   {
-    index: "01",
-    title: "AI 策略",
-    eyebrow: "MARKETPLACE",
-    copy: "实时策略排行榜把最新决策、关联分析师、30 日盈亏与胜率放在同一张卡片上。可以查看详情、关注或 Fork。",
-    metric: "决策 / 盈亏 / 胜率",
+    number: "01",
+    eyebrow: "RESEARCH AGENT",
+    title: "让 AI 持续研究市场",
+    copy: "定义市场、分析方向、数据类型和输出规则，让 Research Agent 持续读取数据并产出可追踪的市场观点。",
+    tags: ["资金流", "投资研究", "量化分析"],
   },
   {
-    index: "02",
-    title: "分析师广场",
-    eyebrow: "RESEARCH LAYER",
-    copy: "按专精与币种筛选研究 Agent，对照做多与做空观点，再把可信信号源接入自己的 PM Agent。",
-    metric: "多空对垒 / 实时观点",
+    number: "02",
+    eyebrow: "PM AGENT",
+    title: "把信号变成策略决策",
+    copy: "组合一个或多个分析师信号，再配置交易目标、风险风格、标的、频率和止盈止损，生成可运行的 PM Agent。",
+    tags: ["策略目标", "风险管理", "交易执行"],
   },
   {
-    index: "03",
-    title: "我的 AI",
-    eyebrow: "CONTROL ROOM",
-    copy: "统一管理策略和分析师，查看运行状态、模拟盘、决策频率、模型与信号源，并进入详情页持续运维。",
-    metric: "状态 / 频率 / 组合",
+    number: "03",
+    eyebrow: "FORK & VALIDATE",
+    title: "从优质 Agent 快速开始",
+    copy: "查看公开分析师与策略的逻辑和表现，通过 Fork 建立自己的版本，并优先在模拟环境中持续验证。",
+    tags: ["策略市场", "一键 Fork", "Paper Trading"],
   },
 ];
 
-const pmSteps = [
-  ["目标", "稳健保值 / 波段交易 / 趋势跟踪 / 套利对冲"],
-  ["风格", "保守 1x / 平衡 1–3x / 激进 1–5x"],
-  ["标的", "主流币或扩展主流组合"],
-  ["频率", "每 15 分钟或每 1 小时"],
-  ["纪律", "止盈止损模板"],
-  ["合成", "自动生成策略提示词、风控与分析师组合"],
+const workflow = [
+  {
+    number: "01",
+    title: "发现",
+    label: "DISCOVER",
+    copy: "浏览 AI 策略与分析师市场，查看最新观点、决策和历史表现。",
+  },
+  {
+    number: "02",
+    title: "创建",
+    label: "BUILD",
+    copy: "从零创建 Research Agent 或 PM Agent，也可以 Fork 已有 Agent。",
+  },
+  {
+    number: "03",
+    title: "验证",
+    label: "VALIDATE",
+    copy: "先用私有和模拟方式观察策略逻辑、风险边界与实际运行状态。",
+  },
+  {
+    number: "04",
+    title: "进化",
+    label: "EVOLVE",
+    copy: "基于持续产生的观点、决策和表现，调整配置并迭代自己的策略。",
+  },
+];
+
+const faqs = [
+  {
+    question: "不懂编程，可以创建 AI Agent 吗？",
+    answer: "可以。Flowmax 使用问答式创建流程，引导你选择市场、目标、风险、标的、频率和止盈止损，不要求编写代码。",
+  },
+  {
+    question: "Research Agent 和 PM Agent 有什么区别？",
+    answer: "Research Agent 负责市场研究与信号输出；PM Agent 组合研究信号、策略规则和风险参数，负责形成交易决策。",
+  },
+  {
+    question: "Fork 会复制原策略的收益吗？",
+    answer: "不会。Fork 复制的是可以复用的结构和配置。市场环境、运行时间和参数不同，结果也会不同。",
+  },
+  {
+    question: "第一次使用应该从哪里开始？",
+    answer: "先浏览公开 Agent，查看详情并理解风险；再 Fork 一个接近自己目标的策略，用私有和模拟方式验证。",
+  },
 ];
 
 export default function Home() {
@@ -42,126 +103,157 @@ export default function Home() {
     <main>
       <nav className="nav shell" aria-label="主导航">
         <a className="brand" href="#top" aria-label="Flowmax 首页">
-          <span className="brandMark">F</span>
-          <span>FLOWMAX</span>
+          <span className="brandOrb" aria-hidden="true">
+            <span />
+          </span>
+          <span className="brandName">Flow Max</span>
         </a>
+
         <div className="navLinks">
-          <a href="#product">产品</a>
-          <a href="#workflow">工作流</a>
-          <a href="#safety">安全</a>
+          <a className="active" href="#product">产品能力</a>
+          <a href="#workflow">工作原理</a>
+          <a href="#about">About Us</a>
+          <a href="#faq">使用帮助</a>
         </div>
+
         <a className="navCta" href="https://flowmax.com/" target="_blank" rel="noreferrer">
           打开 Flowmax <span>↗</span>
         </a>
       </nav>
 
-      <section id="top" className="hero shell">
-        <div className="heroCopy">
-          <div className="kicker">
-            <span className="pulse" />
-            ONE-PERSON HEDGE FUND
-          </div>
-          <h1>
-            把研究、决策与风控
-            <span>组装成你的 AI 投资团队。</span>
-          </h1>
-          <p className="heroLead">
-            Flowmax 让 Research Agent 持续产出观点，让 PM Agent 汇总信号、执行纪律化决策，并在模拟盘中留下可追踪的过程与结果。
-          </p>
-          <div className="heroActions">
-            <a className="primaryButton" href="https://flowmax.com/create-strategy" target="_blank" rel="noreferrer">
-              创建 AI 策略 <span>→</span>
-            </a>
-            <a className="textButton" href="#workflow">
-              查看创建流程 <span>↓</span>
-            </a>
-          </div>
-          <div className="trustRow" aria-label="产品特性">
-            <span>模拟盘先行</span>
-            <span>研究信号可组合</span>
-            <span>决策过程可追踪</span>
-          </div>
-        </div>
+      <section id="top" className="hero">
+        <div className="heroGrid" aria-hidden="true" />
+        <div className="heroGlow heroGlowOne" aria-hidden="true" />
+        <div className="heroGlow heroGlowTwo" aria-hidden="true" />
 
-        <div className="heroVisual" aria-label="Flowmax AI 策略示意">
-          <div className="orbit orbitOne" />
-          <div className="orbit orbitTwo" />
-          <div className="dashboardCard">
-            <div className="cardTop">
-              <div>
-                <span className="overline">PM AGENT · LIVE</span>
-                <h2>保守 · 稳健保值</h2>
-              </div>
-              <span className="status">运行中</span>
+        <div className="shell heroInner">
+          <div className="heroCopy">
+            <div className="eyebrowPill">
+              <span className="liveDot" />
+              AI AGENT AUTOMATED TRADING
             </div>
-            <div className="decision">
-              <div className="coin">₿</div>
-              <div>
-                <span>最新决策</span>
-                <strong>WAIT / 等待信号共振</strong>
-              </div>
-              <b>15m</b>
+            <h1>
+              让 AI 接管市场研究、
+              <span>策略与执行。</span>
+            </h1>
+            <p>
+              创建、验证和 Fork AI 分析师与交易策略。Flowmax 把实时市场分析、风险管理与订单执行连接成一套持续运行的 Agent 工作流。
+            </p>
+            <div className="heroActions">
+              <a className="primaryButton" href="https://flowmax.com/create-strategy" target="_blank" rel="noreferrer">
+                创建 AI 策略 <span>→</span>
+              </a>
+              <a className="secondaryButton" href="#workflow">
+                了解工作原理
+              </a>
             </div>
-            <div className="signalList">
-              {analystSignals.map((item) => (
-                <div className="signalRow" key={item.name}>
-                  <span className="analystDot" />
-                  <span>{item.name}</span>
-                  <span className={`signalTag ${item.tone}`}>{item.signal}</span>
+            <div className="heroMeta">
+              <span><i>✓</i> 问答式创建</span>
+              <span><i>✓</i> Paper Trading</span>
+              <span><i>✓</i> 可查看决策过程</span>
+            </div>
+          </div>
+
+          <div className="terminalWrap" aria-label="Flowmax AI 策略广场界面示意">
+            <div className="terminalGlow" />
+            <div className="terminal">
+              <div className="terminalTop">
+                <div>
+                  <span className="terminalLabel">AI 策略广场</span>
+                  <strong>正在运行的策略</strong>
                 </div>
-              ))}
-            </div>
-            <div className="riskBar">
-              <div>
-                <span>风险配置</span>
-                <strong>1x · 硬止损</strong>
+                <span className="demoBadge">产品示意</span>
               </div>
-              <div className="barTrack">
-                <span />
+              <div className="terminalFilters">
+                <span className="selected">全部</span>
+                <span>Crypto</span>
+                <span>股票</span>
+                <b>30D PnL ↓</b>
               </div>
-              <em>LOW</em>
+              <div className="strategyHeader">
+                <span>名称</span>
+                <span>最新决策</span>
+                <span>分析师</span>
+                <span>标的</span>
+                <span>30D PnL</span>
+              </div>
+              <div className="strategyRows">
+                {strategies.map((strategy, index) => (
+                  <div className="strategyRow" key={strategy.name}>
+                    <div className="strategyName">
+                      <span className={`agentAvatar avatar${index + 1}`}>{strategy.name.slice(0, 1)}</span>
+                      <span>
+                        <strong>{strategy.name}</strong>
+                        <small>{strategy.type}</small>
+                      </span>
+                    </div>
+                    <span className={`decisionTag ${strategy.status.toLowerCase()}`}>{strategy.status}</span>
+                    <span className="analystCount"><i /> {strategy.analysts}</span>
+                    <span className="assets">{strategy.assets}</span>
+                    <strong className={strategy.tone}>{strategy.pnl}</strong>
+                  </div>
+                ))}
+              </div>
+              <div className="terminalFoot">
+                <span><i className="statusDot" /> Agent network online</span>
+                <a href="https://flowmax.com/" target="_blank" rel="noreferrer">查看全部策略 →</a>
+              </div>
             </div>
-          </div>
-          <div className="floatingNote noteTop">
-            <span>Research</span>
-            <strong>3 个信号源</strong>
-          </div>
-          <div className="floatingNote noteBottom">
-            <span>Paper trading</span>
-            <strong>模拟盘</strong>
+            <div className="signalCard signalOne">
+              <span>RESEARCH SIGNAL</span>
+              <strong>OI 空头减仓</strong>
+              <small>置信度 78%</small>
+            </div>
+            <div className="signalCard signalTwo">
+              <span>RISK STATUS</span>
+              <strong>LOW · 1x</strong>
+              <small>Hard stop enabled</small>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="ticker" aria-label="核心能力">
-        <div>
-          <span>RESEARCH AGENT</span><i>✦</i>
-          <span>PM AGENT</span><i>✦</i>
-          <span>RISK CONTROL</span><i>✦</i>
-          <span>PAPER TRADING</span><i>✦</i>
-          <span>LIVE SIGNALS</span><i>✦</i>
+      <section className="trustStrip" aria-label="Flowmax 核心能力">
+        <div className="shell trustStripInner">
+          <span>RESEARCH AGENT</span>
+          <i />
+          <span>PM AGENT</span>
+          <i />
+          <span>RISK CONTROL</span>
+          <i />
+          <span>PAPER TRADING</span>
+          <i />
+          <span>FORK &amp; EVOLVE</span>
         </div>
       </section>
 
       <section id="product" className="section shell">
-        <div className="sectionHead">
+        <div className="sectionIntro">
           <div>
-            <span className="sectionNo">/ 01</span>
-            <p className="eyebrow">PRODUCT SURFACES</p>
+            <span className="sectionKicker">PRODUCT CAPABILITIES</span>
+            <h2>从研究信号到交易执行，<br />都在一个 AI Agent 平台。</h2>
           </div>
-          <h2>从市场观察，到自己的 AI 控制室。</h2>
-          <p>三个核心界面把发现、研究和管理连成一条清晰路径。</p>
+          <p>
+            专业交易者与 Builder 可以创建和验证策略；普通用户可以从公开 Agent 出发，理解、Fork 并运行自己的版本。
+          </p>
         </div>
-        <div className="surfaceGrid">
-          {surfaces.map((surface) => (
-            <article className="surfaceCard" key={surface.index}>
-              <div className="surfaceTop">
-                <span>{surface.index}</span>
-                <small>{surface.eyebrow}</small>
+
+        <div className="capabilityGrid">
+          {capabilities.map((capability) => (
+            <article className="capabilityCard" key={capability.number}>
+              <div className="capabilityTop">
+                <span>{capability.number}</span>
+                <small>{capability.eyebrow}</small>
               </div>
-              <h3>{surface.title}</h3>
-              <p>{surface.copy}</p>
-              <div className="surfaceMetric">{surface.metric}</div>
+              <div className={`capabilityIcon icon${capability.number}`} aria-hidden="true">
+                <span />
+                <i />
+              </div>
+              <h3>{capability.title}</h3>
+              <p>{capability.copy}</p>
+              <div className="tagRow">
+                {capability.tags.map((tag) => <span key={tag}>{tag}</span>)}
+              </div>
             </article>
           ))}
         </div>
@@ -169,114 +261,168 @@ export default function Home() {
 
       <section id="workflow" className="workflowSection">
         <div className="shell">
-          <div className="sectionHead light">
-            <div>
-              <span className="sectionNo">/ 02</span>
-              <p className="eyebrow">AGENT WORKFLOW</p>
-            </div>
-            <h2>Research 提供证据，PM 负责做决定。</h2>
-            <p>把不同职责拆开，能够更清楚地检查数据源、观点和风险纪律。</p>
+          <div className="workflowTitle">
+            <span className="sectionKicker">HOW IT WORKS</span>
+            <h2>一个清晰的 Agent 交易闭环</h2>
+            <p>把研究、决策、风控和验证拆开，让每一步都更容易理解和检查。</p>
           </div>
 
-          <div className="agentFlow">
-            <article className="agentPanel">
-              <div className="agentLabel"><span>R</span> RESEARCH AGENT</div>
-              <h3>先定义“看什么”</h3>
-              <p>选择 Crypto 市场、LLM 和分析类型，明确必用数据源，并规定输出格式与缺失数据处理方式。</p>
-              <ul>
-                <li>资金费率 / OI / 爆仓</li>
-                <li>信号方向与置信度</li>
-                <li>关键价位与数据缺口</li>
-              </ul>
-              <a href="https://flowmax.com/create-analyst" target="_blank" rel="noreferrer">创建分析师 ↗</a>
-            </article>
-
-            <div className="flowConnector" aria-hidden="true">
-              <span>01</span>
-              <div />
-              <b>信号输入</b>
-              <div />
-              <span>02</span>
-            </div>
-
-            <article className="agentPanel pmPanel">
-              <div className="agentLabel"><span>P</span> PM AGENT</div>
-              <h3>再定义“怎么做”</h3>
-              <p>选择目标、风险风格、交易标的、决策频率和止盈止损纪律，再由系统合成提示词与风控规则。</p>
-              <ul>
-                <li>保守 / 平衡 / 激进</li>
-                <li>15 分钟 / 1 小时</li>
-                <li>模拟盘验证后再放大</li>
-              </ul>
-              <a href="https://flowmax.com/create-strategy" target="_blank" rel="noreferrer">创建策略 ↗</a>
-            </article>
-          </div>
-
-          <div className="stepRail" aria-label="PM Agent 六步创建流程">
-            {pmSteps.map(([title, copy], index) => (
-              <div className="step" key={title}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <strong>{title}</strong>
-                <p>{copy}</p>
-              </div>
+          <div className="workflowRail">
+            {workflow.map((step, index) => (
+              <article className="workflowStep" key={step.number}>
+                <div className="stepNode">
+                  <span>{step.number}</span>
+                  {index < workflow.length - 1 && <i />}
+                </div>
+                <small>{step.label}</small>
+                <h3>{step.title}</h3>
+                <p>{step.copy}</p>
+              </article>
             ))}
+          </div>
+
+          <div className="agentComposer">
+            <div className="composerCopy">
+              <span className="sectionKicker">AGENT COMPOSER</span>
+              <h2>Research 提供证据，<br />PM 负责做决定。</h2>
+              <p>
+                先创建专注于不同数据与研究方向的分析师，再由 PM Agent 组合信号、执行风险规则，并把每次决策和结果留下来。
+              </p>
+              <a className="primaryButton" href="https://flowmax.com/create-analyst" target="_blank" rel="noreferrer">
+                创建 Research Agent <span>→</span>
+              </a>
+            </div>
+
+            <div className="composerDiagram" aria-label="Research Agent 到 PM Agent 的组合流程">
+              <div className="researchStack">
+                {[
+                  ["01", "资金流分析", "Funding · OI"],
+                  ["02", "投资研究", "Market context"],
+                  ["03", "量化分析", "Momentum · Risk"],
+                ].map(([number, title, label]) => (
+                  <div className="researchNode" key={number}>
+                    <span>{number}</span>
+                    <div>
+                      <strong>{title}</strong>
+                      <small>{label}</small>
+                    </div>
+                    <b>LIVE</b>
+                  </div>
+                ))}
+              </div>
+              <div className="mergeLine" aria-hidden="true">
+                <span />
+                <i>+</i>
+                <span />
+              </div>
+              <div className="pmNode">
+                <div className="pmNodeTop">
+                  <span>PM</span>
+                  <b>RUNNING</b>
+                </div>
+                <strong>Steady Alpha</strong>
+                <small>Signals → Decision → Risk</small>
+                <div className="riskMeter">
+                  <span><i /></span>
+                  <b>LOW RISK</b>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="safety" className="section shell">
-        <div className="safetyWrap">
-          <div className="safetyCopy">
-            <span className="sectionNo">/ 03</span>
-            <p className="eyebrow">SAFETY BY DEFAULT</p>
-            <h2>先在模拟盘里证明纪律。</h2>
+      <section id="about" className="aboutSection">
+        <div className="shell">
+          <div className="aboutHeader">
+            <span className="sectionKicker">ABOUT FLOWMAX</span>
+            <p>关于 Flowmax</p>
+          </div>
+          <div className="aboutLead">
+            <h2>以智能重塑交易。</h2>
             <p>
-              PM Agent 默认应先使用纸面交易凭证，并设置明确的杠杆、仓位、止损和决策周期。Research Agent 只使用声明过的数据源，缺失时明确说“不知道”。
+              Flowmax 是面向加密资产与美股市场的 AI Agent 自动交易平台。我们将专业交易策略、实时市场分析、风险管理与订单执行整合进 AI Agent，让 AI 能够持续分析市场、捕捉交易信号并自动完成交易。
             </p>
-            <div className="safetyBadges">
-              <span>PRIVATE FIRST</span>
-              <span>PAPER TRADING</span>
-              <span>HARD STOP</span>
-            </div>
+            <p>
+              Flowmax 既服务于希望创建和验证策略的专业交易者与 Builder，也帮助普通用户更轻松地使用优质 AI 交易策略，减少复杂操作，让专业交易能力触手可及。
+            </p>
           </div>
-          <div className="checklist">
-            <div className="checklistHead">
-              <span>上线前检查</span>
-              <b>4 / 4</b>
-            </div>
-            {[
-              "Scheduler 正在运行",
-              "决策周期与预期一致",
-              "持仓数量没有异常堆积",
-              "名称、标的与风险档位正确",
-            ].map((item) => (
-              <div className="checkItem" key={item}>
-                <span>✓</span>
-                <p>{item}</p>
-              </div>
-            ))}
+
+          <div className="aboutGrid">
+            <article>
+              <span>01</span>
+              <h3>团队背景</h3>
+              <p>
+                Flowmax 核心团队拥有华尔街量化交易、金融科技与 AI 产品背景，具备从策略研究、风险控制到交易系统搭建的完整经验。
+              </p>
+              <p>
+                由具备深厚数字资产与交易基础设施经验的团队打造，并获得机构投资 Vernal 的战略支持。
+              </p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>我们的使命</h3>
+              <p>
+                以智能重塑交易，让专业 AI 策略接管市场监测、机会识别与交易执行，在严谨风控下持续进化，追求更具竞争力的投资回报，让用户不再被市场束缚，真正释放时间与财富增长的潜力。
+              </p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>我们的愿景</h3>
+              <p>
+                打造一个开放、透明且持续进化的 AI Agent 交易生态，让优秀策略被验证、被使用并创造长期价值，推动交易从人工决策走向智能自动化。
+              </p>
+            </article>
           </div>
+        </div>
+      </section>
+
+      <section id="faq" className="faqSection shell">
+        <div className="faqIntro">
+          <span className="sectionKicker">GETTING STARTED</span>
+          <h2>第一次使用 Flowmax？</h2>
+          <p>从最常见的问题开始，快速理解分析师、策略和 Fork。</p>
+          <a href="https://flowmax.com/" target="_blank" rel="noreferrer">进入 Flowmax 开始使用 ↗</a>
+        </div>
+        <div className="faqList">
+          {faqs.map((faq, index) => (
+            <details key={faq.question} open={index === 0}>
+              <summary>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                {faq.question}
+                <i>+</i>
+              </summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))}
         </div>
       </section>
 
       <section className="closing">
+        <div className="closingGrid" aria-hidden="true" />
         <div className="shell closingInner">
-          <p>RESEARCH → DECISION → DISCIPLINE</p>
-          <h2>你的 AI 投资团队，<br />从一个清晰的策略开始。</h2>
-          <a className="primaryButton inverted" href="https://flowmax.com/" target="_blank" rel="noreferrer">
-            进入 Flowmax <span>↗</span>
-          </a>
-          <small>仅供产品演示与研究，不构成投资建议。</small>
+          <span className="sectionKicker">BUILD YOUR AI TRADING TEAM</span>
+          <h2>你的第一个 AI 交易 Agent，<br />不必从代码开始。</h2>
+          <p>创建 Research Agent，或 Fork 一个已有策略开始验证。</p>
+          <div className="closingActions">
+            <a className="primaryButton lightButton" href="https://flowmax.com/create-strategy" target="_blank" rel="noreferrer">
+              创建 AI 策略 <span>→</span>
+            </a>
+            <a className="secondaryButton" href="https://flowmax.com/analysts" target="_blank" rel="noreferrer">
+              浏览 AI 分析师
+            </a>
+          </div>
+          <small>历史表现不代表未来结果。AI Agent 的研究与策略输出不构成投资建议。</small>
         </div>
       </section>
 
       <footer className="footer shell">
         <a className="brand" href="#top">
-          <span className="brandMark">F</span>
-          <span>FLOWMAX</span>
+          <span className="brandOrb" aria-hidden="true"><span /></span>
+          <span className="brandName">Flow Max</span>
         </a>
-        <p>One-person hedge fund · AI-native research &amp; portfolio management</p>
-        <span>© 2026</span>
+        <p>AI Agent Automated Trading Platform</p>
+        <span>© 2026 Flowmax</span>
       </footer>
     </main>
   );

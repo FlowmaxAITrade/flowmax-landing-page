@@ -18,27 +18,27 @@ export async function generateMetadata(): Promise<Metadata> {
   const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host") ?? "localhost:3000";
   const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
   const baseUrl = new URL(`${protocol}://${host}`);
-  const imageUrl = new URL("/og.png", baseUrl).toString();
+  const imageUrl = new URL("/og-v2.png", baseUrl).toString();
 
   return {
     metadataBase: baseUrl,
-    title: "Flowmax — 你的 AI 投资团队",
+    title: "Flowmax — AI Agent 自动交易平台",
     description:
-      "用 Research Agent 研究市场，用 PM Agent 组合信号、执行风险纪律，并在模拟盘中验证策略。",
+      "创建、验证和 Fork AI 分析师与交易策略，让 AI 持续完成市场研究、风险管理与交易执行。",
     icons: {
       icon: "/favicon.svg",
       shortcut: "/favicon.svg",
     },
     openGraph: {
-      title: "Flowmax — 你的 AI 投资团队",
-      description: "把研究、决策与风控组装成你的 AI 投资团队。",
+      title: "Flowmax — AI Agent 自动交易平台",
+      description: "创建、验证和 Fork AI 分析师与交易策略。",
       type: "website",
-      images: [{ url: imageUrl, width: 1536, height: 1024, alt: "Flowmax AI 投资团队" }],
+      images: [{ url: imageUrl, width: 1536, height: 1024, alt: "Flowmax AI Agent 自动交易平台" }],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Flowmax — 你的 AI 投资团队",
-      description: "Research → Decision → Discipline",
+      title: "Flowmax — AI Agent 自动交易平台",
+      description: "Research → Strategy → Risk Control → Execution",
       images: [imageUrl],
     },
   };
