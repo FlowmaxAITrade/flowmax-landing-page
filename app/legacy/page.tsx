@@ -235,7 +235,7 @@ export default function LegacyLandingPage() {
             <p className={styles.eyebrow}>SAFETY BY DEFAULT</p>
             <h2>先在模拟盘里证明纪律。</h2>
             <p>
-              PM Agent 默认应先使用纸面交易凭证，并设置明确的杠杆、仓位、止损和决策周期。Research Agent 只使用声明过的数据源，缺失时明确说“不知道”。
+              PM Agent 默认应先使用模拟盘，并设置明确的杠杆、仓位、止损和决策周期。Research Agent 只使用声明过的数据源，缺失时明确说“不知道”。
             </p>
             <div className={styles.safetyBadges}>
               <span>PRIVATE FIRST</span>

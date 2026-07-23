@@ -106,7 +106,7 @@ export default function Home() {
           <span className="brandOrb" aria-hidden="true">
             <span />
           </span>
-          <span className="brandName">Flow Max</span>
+          <span className="brandName">Flowmax</span>
         </a>
 
         <div className="navLinks">
@@ -336,7 +336,6 @@ export default function Home() {
         <div className="shell">
           <div className="aboutHeader">
             <span className="sectionKicker">ABOUT FLOWMAX</span>
-            <p>关于 Flowmax</p>
           </div>
           <div className="aboutLead">
             <h2>以智能重塑交易。</h2>
@@ -419,7 +418,7 @@ export default function Home() {
       <footer className="footer shell">
         <a className="brand" href="#top">
           <span className="brandOrb" aria-hidden="true"><span /></span>
-          <span className="brandName">Flow Max</span>
+          <span className="brandName">Flowmax</span>
         </a>
         <p>AI Agent Automated Trading Platform</p>
         <span>© 2026 Flowmax</span>
