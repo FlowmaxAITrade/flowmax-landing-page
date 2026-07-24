@@ -1,3 +1,22 @@
+import { ArrowRight, Plus } from "lucide-react";
 import ContentLayout from "../content-layout";
-const faqs = [["分析师和策略有什么区别？", "分析师负责研究市场并输出观点；策略将一个或多个分析师信号与策略目标、风险规则结合，生成决策。"], ["不懂编程也能使用吗？", "可以。产品通过配置项和提示词帮助你创建 Agent。第一次建议先 Fork 接近自己目标的 Agent，并使用私有、模拟方式验证。"], ["为什么一直显示部署中？", "部署需要一定时间。请刷新页面查看状态；若长时间没有变化，请记录 Agent 名称、创建时间、页面提示和截图后联系支持团队。"], ["为什么没有产生观点或新决策？", "检查部署状态、数据是否可用、提示词或配置、决策频率、关联分析师是否有新信号，以及 Credits 是否充足。"], ["Fork 会复制原策略的收益吗？", "不会。Fork 复制的是可复用的结构或配置；市场环境、运行时间和后续参数不同，结果也会不同。"], ["策略表现好，是否代表以后也会赚钱？", "不代表。任何表现数据都应结合统计周期、计算口径和风险水平理解；历史表现不代表未来结果。"]];
-export default function FaqPage() { return <ContentLayout eyebrow="SUPPORT" title="常见问题" intro="先理解研究、策略与风险边界，再开始建立属于自己的 AI 工作流。"><div className="faqList full">{faqs.map(([question, answer], index) => <details key={question} open={index === 0}><summary><span>{String(index + 1).padStart(2, "0")}</span>{question}<i>+</i></summary><p>{answer}</p></details>)}</div><div className="notice"><strong>需要更多帮助？</strong><p>请同时提供发生时间、Agent 名称、页面提示和已脱敏的截图。不要提供密码、验证码、私钥或 API Secret。</p><a href="/guide">查看完整使用指南 →</a></div></ContentLayout>; }
+
+const faqs = [
+  ["分析师和策略有什么区别？", "分析师负责研究市场并输出观点；策略将一个或多个分析师信号与策略目标、风险规则结合，生成决策。"],
+  ["不懂编程也能使用吗？", "可以。产品通过配置项和提示词帮助你创建 Agent。第一次建议先 Fork 接近自己目标的 Agent，并使用私有、模拟方式验证。"],
+  ["为什么一直显示部署中？", "部署需要一定时间。请刷新页面查看状态；若长时间没有变化，请记录 Agent 名称、创建时间、页面提示和截图后联系支持团队。"],
+  ["为什么没有产生观点或新决策？", "检查部署状态、数据是否可用、提示词或配置、决策频率、关联分析师是否有新信号，以及 Credits 是否充足。"],
+  ["Fork 会复制原策略的收益吗？", "不会。Fork 复制的是可复用的结构或配置；市场环境、运行时间和后续参数不同，结果也会不同。"],
+  ["策略表现好，是否代表以后也会赚钱？", "不代表。任何表现数据都应结合统计周期、计算口径和风险水平理解；历史表现不代表未来结果。"],
+];
+
+export default function FaqPage() {
+  return (
+    <ContentLayout eyebrow="SUPPORT" title="常见问题" intro="先理解研究、策略与风险边界，再开始建立属于自己的 AI 工作流。">
+      <div className="faqList full">
+        {faqs.map(([question, answer], index) => <details key={question} open={index === 0}><summary><span>{String(index + 1).padStart(2, "0")}</span>{question}<Plus size={18} strokeWidth={1.8} aria-hidden="true" /></summary><p>{answer}</p></details>)}
+      </div>
+      <div className="notice"><strong>需要更多帮助？</strong><p>请同时提供发生时间、Agent 名称、页面提示和已脱敏的截图。不要提供密码、验证码、私钥或 API Secret。</p><a className="inlineIconLink" href="/guide">查看完整使用指南 <ArrowRight size={13} strokeWidth={1.8} aria-hidden="true" /></a></div>
+    </ContentLayout>
+  );
+}

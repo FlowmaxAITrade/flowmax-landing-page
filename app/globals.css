@@ -256,22 +256,6 @@ summary {
 
 .menuToggle {
   display: none;
-  gap: 5px;
-}
-
-.menuToggle span {
-  width: 16px;
-  height: 1px;
-  background: currentColor;
-  transition: transform 180ms ease;
-}
-
-.menuToggle[aria-expanded="true"] span:first-child {
-  transform: translateY(3px) rotate(45deg);
-}
-
-.menuToggle[aria-expanded="true"] span:last-child {
-  transform: translateY(-3px) rotate(-45deg);
 }
 
 .mobileMenu {
@@ -313,12 +297,12 @@ summary {
 }
 
 .mobileMenuInner > a:not(.mobileMenuCta).active > span,
-.mobileMenuInner > a:not(.mobileMenuCta).active > i {
+.mobileMenuInner > a:not(.mobileMenuCta).active > svg {
   color: var(--primary);
 }
 
 .mobileMenuInner > a > span,
-.mobileMenuInner > a > i {
+.mobileMenuInner > a > svg {
   color: var(--muted-foreground);
   font-family: var(--font-geist-mono);
   font-size: 9px;
@@ -474,9 +458,9 @@ summary {
   color: #07110f;
 }
 
-.primaryButton span {
-  font-size: 17px;
-}
+.primaryButton svg,
+.navCta svg,
+.mobileMenuCta svg { flex: 0 0 auto; }
 
 .secondaryButton {
   border: 1px solid var(--border);
@@ -504,9 +488,8 @@ summary {
   gap: 6px;
 }
 
-.heroMeta i {
+.heroMeta svg {
   color: var(--primary);
-  font-style: normal;
 }
 
 .terminalWrap {
@@ -675,13 +658,7 @@ summary {
   color: #8aa09a;
 }
 
-.analystCount i {
-  width: 17px;
-  height: 17px;
-  border: 2px solid #66e351;
-  border-radius: 50%;
-  box-shadow: 7px 0 0 -2px #121918, 7px 0 0 0 #f5a623;
-}
+.analystCount svg { color: var(--primary); }
 
 .assets { color: #8aa09a; }
 .gain { color: var(--gain); }
@@ -865,22 +842,15 @@ summary {
   background: radial-gradient(circle, rgba(102, 227, 81, 0.12), transparent 67%);
 }
 
-.capabilityIcon::before,
-.capabilityIcon::after {
+.capabilityIcon::before {
   content: "";
   position: absolute;
+  inset: 15px;
   border: 1px solid rgba(102, 227, 81, 0.18);
   border-radius: 50%;
 }
 
-.capabilityIcon::before { inset: 15px; }
-.capabilityIcon::after { inset: 36px; background: var(--primary); box-shadow: 0 0 20px rgba(102, 227, 81, 0.42); }
-.capabilityIcon > span,
-.capabilityIcon > i { position: absolute; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
-.capabilityIcon > span { top: 12px; left: 50%; }
-.capabilityIcon > i { right: 5px; bottom: 30px; }
-.icon02 { transform: rotate(36deg); }
-.icon03 { border-radius: 18px; transform: rotate(45deg); }
+.capabilityIcon svg { position: relative; z-index: 1; color: var(--primary); }
 
 .capabilityCard h3 {
   margin: 0;
@@ -1060,7 +1030,7 @@ summary {
 }
 
 .mergeLine span { height: 1px; background: rgba(102, 227, 81, 0.3); }
-.mergeLine i {
+.mergeLine > svg {
   display: grid;
   place-items: center;
   width: 24px;
@@ -1268,7 +1238,7 @@ summary {
   font-size: 9px;
 }
 
-.safetyCheck i {
+.safetyCheck > svg {
   display: grid;
   place-items: center;
   width: 25px;
@@ -1276,8 +1246,7 @@ summary {
   border-radius: 50%;
   background: var(--primary-soft);
   color: var(--primary);
-  font-size: 11px;
-  font-style: normal;
+  padding: 4px;
   font-weight: 800;
 }
 
@@ -1388,8 +1357,8 @@ summary {
 
 .faqList summary::-webkit-details-marker { display: none; }
 .faqList summary > span { color: #657872; font-family: var(--font-geist-mono); font-size: 9px; }
-.faqList summary i { color: var(--primary); font-size: 20px; font-style: normal; transition: transform 180ms ease; }
-.faqList details[open] summary i { transform: rotate(45deg); }
+.faqList summary > svg { color: var(--primary); transition: transform 180ms ease; }
+.faqList details[open] summary > svg { transform: rotate(45deg); }
 .faqList details > p {
   max-width: 690px;
   margin: -4px 40px 25px 46px;
@@ -1947,13 +1916,14 @@ summary {
 .guidePath span, .guideLinks small, .partnerGrid > article > span { color: var(--primary); font-family: var(--font-geist-mono); font-size: 10px; letter-spacing: .08em; }
 .guidePath h2, .guideLinks strong, .partnerGrid h2 { display: block; margin: 55px 0 12px; font-size: 21px; line-height: 1.2; }
 .guidePath p, .guideLinks span, .partnerGrid p { margin: 0; color: var(--muted-foreground); font-size: 13px; line-height: 1.75; }
+.guideLinks span, .inlineIconLink { display: inline-flex; align-items: center; gap: 6px; }
 
 .contentSplit { display: grid; grid-template-columns: .95fr 1.05fr; gap: 76px; align-items: center; margin-top: 88px; padding: 58px; border: 1px solid var(--border); border-radius: 16px; background: linear-gradient(135deg, var(--card), rgba(102, 227, 81, 0.05)); }
 .contentSplit h2, .process h2, .contactPanel h2 { margin: 14px 0 0; font-size: clamp(31px, 4vw, 49px); letter-spacing: -.045em; }
 .contentSplit p, .contactPanel p { color: var(--muted-foreground); font-size: 14px; line-height: 1.85; }
 .contentSplit .primaryButton { margin-top: 22px; }
 .checklist { display: grid; gap: 11px; padding: 27px; border: 1px solid rgba(102, 227, 81, .28); border-radius: 11px; background: rgba(102, 227, 81, .06); }
-.checklist strong { margin-bottom: 8px; font-size: 14px; }.checklist span { color: var(--muted-foreground); font-size: 13px; }.checklist span::first-letter { color: var(--primary); }
+.checklist strong { margin-bottom: 8px; font-size: 14px; }.checklist span { display: flex; align-items: center; gap: 8px; color: var(--muted-foreground); font-size: 13px; }.checklist span svg { flex: 0 0 auto; color: var(--primary); }
 .guideLinks { grid-template-columns: repeat(3, 1fr); margin-top: 28px; }.guideLinks > a { transition: background .2s ease, transform .2s ease; }.guideLinks > a:hover { background: var(--primary-soft); transform: translateY(-3px); }.guideLinks.single { display: grid; grid-template-columns: repeat(3, 1fr); }.guideLinks.single article { min-height: 250px; padding: 27px; border-right: 1px solid var(--border); background: var(--card); }.guideLinks.single article:last-child { border-right: 0; }.guideLinks.single h2 { margin: 52px 0 14px; font-size: 22px; }.guideLinks.single p { color: var(--muted-foreground); font-size: 13px; line-height: 1.8; }
 
 .prose { max-width: 780px; }.prose h2 { margin: 54px 0 15px; font-size: 28px; letter-spacing: -.035em; }.prose h2:first-child { margin-top: 0; }.prose p { color: var(--muted-foreground); font-size: 15px; line-height: 1.9; }.prose pre { overflow-x: auto; margin: 24px 0; padding: 24px; border: 1px solid var(--border); border-radius: 12px; background: #08100e; color: #c3f6b7; font: 12px/1.8 var(--font-geist-mono); white-space: pre-wrap; }.prose code { padding: 3px 6px; border-radius: 4px; background: var(--primary-soft); color: var(--primary); }.updated { color: var(--primary) !important; font-family: var(--font-geist-mono); font-size: 11px !important; }

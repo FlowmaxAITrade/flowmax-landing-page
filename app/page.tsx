@@ -1,5 +1,12 @@
 import SiteHeader from "./site-header";
 import SiteFooter from "./site-footer";
+import { ArrowRight, Bot, Check, ExternalLink, GitFork, Plus, Users, Workflow } from "lucide-react";
+
+const capabilityIcons = {
+  "01": Bot,
+  "02": Workflow,
+  "03": GitFork,
+} as const;
 
 const strategies = [
   {
@@ -126,16 +133,16 @@ export default function Home() {
             </p>
             <div className="heroActions">
               <a className="primaryButton" href="https://flowmax.com/create-strategy" target="_blank" rel="noreferrer">
-                创建 AI 策略 <span>→</span>
+                创建 AI 策略 <ArrowRight size={16} strokeWidth={1.8} aria-hidden="true" />
               </a>
               <a className="secondaryButton" href="#workflow">
                 了解工作原理
               </a>
             </div>
             <div className="heroMeta">
-              <span><i>✓</i> 问答式创建</span>
-              <span><i>✓</i> Paper Trading</span>
-              <span><i>✓</i> 可查看决策过程</span>
+              <span><Check size={13} strokeWidth={2} aria-hidden="true" /> 问答式创建</span>
+              <span><Check size={13} strokeWidth={2} aria-hidden="true" /> Paper Trading</span>
+              <span><Check size={13} strokeWidth={2} aria-hidden="true" /> 可查看决策过程</span>
             </div>
           </div>
 
@@ -173,7 +180,7 @@ export default function Home() {
                       </span>
                     </div>
                     <span className={`decisionTag ${strategy.status.toLowerCase()}`}>{strategy.status}</span>
-                    <span className="analystCount"><i /> {strategy.analysts}</span>
+                    <span className="analystCount"><Users size={15} strokeWidth={1.7} aria-hidden="true" /> {strategy.analysts}</span>
                     <span className="assets">{strategy.assets}</span>
                     <strong className={strategy.tone}>{strategy.pnl}</strong>
                   </div>
@@ -181,7 +188,7 @@ export default function Home() {
               </div>
               <div className="terminalFoot">
                 <span><i className="statusDot" /> Agent network online</span>
-                <a href="https://flowmax.com/" target="_blank" rel="noreferrer">查看全部策略 →</a>
+                <a className="inlineIconLink" href="https://flowmax.com/" target="_blank" rel="noreferrer">查看全部策略 <ExternalLink size={12} strokeWidth={1.8} aria-hidden="true" /></a>
               </div>
             </div>
             <div className="signalCard signalOne">
@@ -224,23 +231,21 @@ export default function Home() {
         </div>
 
         <div className="capabilityGrid">
-          {capabilities.map((capability) => (
-            <article className="capabilityCard" key={capability.number}>
+          {capabilities.map((capability) => {
+            const CapabilityIcon = capabilityIcons[capability.number as keyof typeof capabilityIcons];
+            return <article className="capabilityCard" key={capability.number}>
               <div className="capabilityTop">
                 <span>{capability.number}</span>
                 <small>{capability.eyebrow}</small>
               </div>
-              <div className={`capabilityIcon icon${capability.number}`} aria-hidden="true">
-                <span />
-                <i />
-              </div>
+              <div className="capabilityIcon" aria-hidden="true"><CapabilityIcon size={38} strokeWidth={1.5} /></div>
               <h3>{capability.title}</h3>
               <p>{capability.copy}</p>
               <div className="tagRow">
                 {capability.tags.map((tag) => <span key={tag}>{tag}</span>)}
               </div>
-            </article>
-          ))}
+            </article>;
+          })}
         </div>
       </section>
 
@@ -274,7 +279,7 @@ export default function Home() {
                 先创建专注于不同数据与研究方向的分析师，再由 PM Agent 组合信号、执行风险规则，并把每次决策和结果留下来。
               </p>
               <a className="primaryButton" href="https://flowmax.com/create-analyst" target="_blank" rel="noreferrer">
-                创建 Research Agent <span>→</span>
+                创建 Research Agent <ArrowRight size={16} strokeWidth={1.8} aria-hidden="true" />
               </a>
             </div>
 
@@ -297,7 +302,7 @@ export default function Home() {
               </div>
               <div className="mergeLine" aria-hidden="true">
                 <span />
-                <i>+</i>
+                <Plus size={14} strokeWidth={1.8} aria-hidden="true" />
                 <span />
               </div>
               <div className="pmNode">
@@ -352,7 +357,7 @@ export default function Home() {
                   <strong>{title}</strong>
                   <small>{status}</small>
                 </div>
-                <i>✓</i>
+                <Check size={14} strokeWidth={2} aria-hidden="true" />
               </div>
             ))}
           </div>
@@ -408,7 +413,7 @@ export default function Home() {
           <span className="sectionKicker">GETTING STARTED</span>
           <h2>第一次使用 Flowmax？</h2>
           <p>从最常见的问题开始，快速理解分析师、策略和 Fork。</p>
-          <a href="https://flowmax.com/" target="_blank" rel="noreferrer">进入 Flowmax 开始使用 ↗</a>
+          <a className="inlineIconLink" href="https://flowmax.com/" target="_blank" rel="noreferrer">进入 Flowmax 开始使用 <ExternalLink size={13} strokeWidth={1.8} aria-hidden="true" /></a>
         </div>
         <div className="faqList">
           {faqs.map((faq, index) => (
@@ -416,7 +421,7 @@ export default function Home() {
               <summary>
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 {faq.question}
-                <i>+</i>
+                <Plus size={18} strokeWidth={1.8} aria-hidden="true" />
               </summary>
               <p>{faq.answer}</p>
             </details>
@@ -432,7 +437,7 @@ export default function Home() {
           <p>创建 Research Agent，或 Fork 一个已有策略开始验证。</p>
           <div className="closingActions">
             <a className="primaryButton lightButton" href="https://flowmax.com/create-strategy" target="_blank" rel="noreferrer">
-              创建 AI 策略 <span>→</span>
+              创建 AI 策略 <ArrowRight size={16} strokeWidth={1.8} aria-hidden="true" />
             </a>
             <a className="secondaryButton" href="https://flowmax.com/analysts" target="_blank" rel="noreferrer">
               浏览 AI 分析师
