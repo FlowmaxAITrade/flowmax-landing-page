@@ -1,4 +1,5 @@
 import SiteHeader from "./site-header";
+import SiteFooter from "./site-footer";
 
 const strategies = [
   {
@@ -441,14 +442,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="footer shell">
-        <a className="brand" href="#top">
-          <span className="brandOrb" aria-hidden="true"><span /></span>
-          <span className="brandName">Flowmax</span>
-        </a>
-        <p>AI Agent Automated Trading Platform</p>
-        <span>© 2026 Flowmax</span>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }
