@@ -1,0 +1,2 @@
+import ContentLayout from "../../content-layout";
+export default function TermsPage() { return <ContentLayout eyebrow="LEGAL & POLICY" title="使用条款" intro="使用服务前，请了解账户、使用资格、费用和服务变更相关的正式条款。"><div className="prose legal"><p className="updated">本页面为发布前内容框架，须经法务审核。</p><h2>账户与资格</h2><p>正式条款将界定用户资格、账户信息准确性、账户安全责任及受限地区要求。</p><h2>用户行为</h2><p>用户不得利用服务从事违法活动、侵犯他人权利、破坏系统安全、规避费用机制或进行虚假宣传。</p><h2>费用与服务变更</h2><p>部分功能可能收取费用；具体价格、消耗、退款与服务变更通知方式以正式政策和产品确认页为准。</p><h2>适用法律与争议解决</h2><p>运营主体、适用法律、司法管辖与争议解决方式将在法务确认后补充至正式版本。</p></div></ContentLayout>; }
