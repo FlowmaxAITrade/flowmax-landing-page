@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ArrowRight, Moon, Sun } from "lucide-react";
 
 const navigation = [
   ["产品能力", "/#product"],
@@ -40,17 +41,17 @@ export default function SiteHeader() {
         </div>
         <div className="navActions">
           <button className="themeToggle" type="button" onClick={toggleTheme} aria-label="切换深浅色主题">
-            <span className="themeIcon themeIconSun" aria-hidden="true">☀</span>
-            <span className="themeIcon themeIconMoon" aria-hidden="true">◐</span>
+            <Sun className="themeIcon themeIconSun" size={15} strokeWidth={1.8} aria-hidden="true" />
+            <Moon className="themeIcon themeIconMoon" size={15} strokeWidth={1.8} aria-hidden="true" />
           </button>
-          <a className="navCta" href="https://flowmax.com/" target="_blank" rel="noreferrer">打开 Flowmax <span>→</span></a>
+          <a className="navCta" href="https://flowmax.com/" target="_blank" rel="noreferrer">打开 Flowmax <ArrowRight size={14} strokeWidth={1.8} aria-hidden="true" /></a>
           <button className="menuToggle" type="button" aria-label={menuOpen ? "关闭导航菜单" : "打开导航菜单"} aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => setMenuOpen((open) => !open)}><span /><span /></button>
         </div>
       </nav>
       <div className={`mobileMenu ${menuOpen ? "isOpen" : ""}`} id="mobile-navigation">
         <div className="shell mobileMenuInner">
-          {navigation.map(([label, href], index) => <a className={isActive(href) ? "active" : undefined} href={href} key={href} onClick={() => setMenuOpen(false)}><span>{String(index + 1).padStart(2, "0")}</span>{label}<i>→</i></a>)}
-          <a className="mobileMenuCta" href="https://flowmax.com/" target="_blank" rel="noreferrer">开始使用 Flowmax <span>→</span></a>
+          {navigation.map(([label, href], index) => <a className={isActive(href) ? "active" : undefined} href={href} key={href} onClick={() => setMenuOpen(false)}><span>{String(index + 1).padStart(2, "0")}</span>{label}<ArrowRight size={15} strokeWidth={1.8} aria-hidden="true" /></a>)}
+          <a className="mobileMenuCta" href="https://flowmax.com/" target="_blank" rel="noreferrer">开始使用 Flowmax <ArrowRight size={15} strokeWidth={1.8} aria-hidden="true" /></a>
         </div>
       </div>
     </header>
