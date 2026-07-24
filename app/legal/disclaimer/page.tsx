@@ -1,0 +1,2 @@
+import ContentLayout from "../../content-layout";
+export default function DisclaimerPage() { return <ContentLayout eyebrow="LEGAL & POLICY" title="免责声明" intro="交易与自动化决策伴随风险；请在了解自身风险承受能力的前提下独立判断。"><div className="prose legal"><p className="updated">本页面为发布前内容框架，须经法务审核。</p><h2>风险警示</h2><p>加密资产及其他金融市场可能剧烈波动。AI 分析、策略输出、历史表现和平台展示的信息均不保证未来结果；你可能损失全部投入资金。</p><h2>不构成投资建议</h2><p>Flowmax 上的内容仅供信息参考，不构成任何证券、金融产品或投资服务的买卖建议，也不构成个性化的财务、税务或法律建议。</p><h2>技术与第三方服务</h2><p>网络、数据、交易所、钱包、智能合约及其他第三方服务均可能发生中断、延迟或故障。正式版本将说明适用范围与责任限制。</p></div></ContentLayout>; }
