@@ -1,3 +1,5 @@
+import SiteHeader from "./site-header";
+
 const strategies = [
   {
     name: "Steady Alpha",
@@ -101,25 +103,7 @@ const faqs = [
 export default function Home() {
   return (
     <main>
-      <nav className="nav shell" aria-label="主导航">
-        <a className="brand" href="#top" aria-label="Flowmax 首页">
-          <span className="brandOrb" aria-hidden="true">
-            <span />
-          </span>
-          <span className="brandName">Flowmax</span>
-        </a>
-
-        <div className="navLinks">
-          <a className="active" href="#product">产品能力</a>
-          <a href="#workflow">工作原理</a>
-          <a href="#about">About Us</a>
-          <a href="#faq">使用帮助</a>
-        </div>
-
-        <a className="navCta" href="https://flowmax.com/" target="_blank" rel="noreferrer">
-          打开 Flowmax <span>↗</span>
-        </a>
-      </nav>
+      <SiteHeader />
 
       <section id="top" className="hero">
         <div className="heroGrid" aria-hidden="true" />
@@ -328,6 +312,48 @@ export default function Home() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="safety" className="safetySection">
+        <div className="shell safetyInner">
+          <div className="safetyCopy">
+            <span className="sectionKicker">SAFETY BY DESIGN</span>
+            <h2>先验证，再运行。<br />让风险边界始终清晰。</h2>
+            <p>
+              Flowmax 把模拟验证、杠杆限制、止盈止损与决策记录放进创建流程。你可以先观察 Agent 如何研究和决策，再决定是否继续运行。
+            </p>
+            <div className="safetyBadges" aria-label="安全能力">
+              <span>Paper Trading</span>
+              <span>Hard Stop</span>
+              <span>Decision Log</span>
+            </div>
+          </div>
+
+          <div className="safetyPanel" aria-label="Flowmax 风险检查清单">
+            <div className="safetyPanelTop">
+              <div>
+                <span>PRE-FLIGHT CHECK</span>
+                <strong>策略运行前检查</strong>
+              </div>
+              <b>4 / 4 READY</b>
+            </div>
+            {[
+              ["01", "模拟盘验证", "已完成 30 天观察"],
+              ["02", "仓位与杠杆", "1x · 保守模式"],
+              ["03", "止盈止损", "Hard stop enabled"],
+              ["04", "决策记录", "全程可追踪"],
+            ].map(([number, title, status]) => (
+              <div className="safetyCheck" key={number}>
+                <span>{number}</span>
+                <div>
+                  <strong>{title}</strong>
+                  <small>{status}</small>
+                </div>
+                <i>✓</i>
+              </div>
+            ))}
           </div>
         </div>
       </section>
