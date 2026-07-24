@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navigation = [
   ["产品能力", "/#product"],
@@ -20,6 +21,12 @@ function toggleTheme() {
 
 export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  function isActive(href: string) {
+    if (href.startsWith("/#")) return pathname === "/";
+    return pathname === href || pathname.startsWith(`${href}/`);
+  }
 
   return (
     <header className="siteHeader">
@@ -29,7 +36,7 @@ export default function SiteHeader() {
           <span className="brandName">Flowmax</span>
         </Link>
         <div className="navLinks">
-          {navigation.map(([label, href], index) => <a className={index === 0 ? "active" : undefined} href={href} key={href}>{label}</a>)}
+          {navigation.map(([label, href]) => <a className={isActive(href) ? "active" : undefined} href={href} key={href}>{label}</a>)}
         </div>
         <div className="navActions">
           <button className="themeToggle" type="button" onClick={toggleTheme} aria-label="切换深浅色主题">
@@ -42,7 +49,7 @@ export default function SiteHeader() {
       </nav>
       <div className={`mobileMenu ${menuOpen ? "isOpen" : ""}`} id="mobile-navigation">
         <div className="shell mobileMenuInner">
-          {navigation.map(([label, href], index) => <a href={href} key={href} onClick={() => setMenuOpen(false)}><span>{String(index + 1).padStart(2, "0")}</span>{label}<i>→</i></a>)}
+          {navigation.map(([label, href], index) => <a className={isActive(href) ? "active" : undefined} href={href} key={href} onClick={() => setMenuOpen(false)}><span>{String(index + 1).padStart(2, "0")}</span>{label}<i>→</i></a>)}
           <a className="mobileMenuCta" href="https://flowmax.com/" target="_blank" rel="noreferrer">开始使用 Flowmax <span>→</span></a>
         </div>
       </div>

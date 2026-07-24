@@ -308,6 +308,15 @@ summary {
   font-size: 15px;
 }
 
+.mobileMenuInner > a:not(.mobileMenuCta).active {
+  color: var(--primary);
+}
+
+.mobileMenuInner > a:not(.mobileMenuCta).active > span,
+.mobileMenuInner > a:not(.mobileMenuCta).active > i {
+  color: var(--primary);
+}
+
 .mobileMenuInner > a > span,
 .mobileMenuInner > a > i {
   color: var(--muted-foreground);
