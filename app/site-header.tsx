@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight, Moon, Sun } from "lucide-react";
+import { ArrowRight, Menu, Moon, Sun, X } from "lucide-react";
 
 const navigation = [
   ["产品能力", "/#product"],
@@ -45,7 +45,7 @@ export default function SiteHeader() {
             <Moon className="themeIcon themeIconMoon" size={15} strokeWidth={1.8} aria-hidden="true" />
           </button>
           <a className="navCta" href="https://flowmax.com/" target="_blank" rel="noreferrer">打开 Flowmax <ArrowRight size={14} strokeWidth={1.8} aria-hidden="true" /></a>
-          <button className="menuToggle" type="button" aria-label={menuOpen ? "关闭导航菜单" : "打开导航菜单"} aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => setMenuOpen((open) => !open)}><span /><span /></button>
+          <button className="menuToggle" type="button" aria-label={menuOpen ? "关闭导航菜单" : "打开导航菜单"} aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => setMenuOpen((open) => !open)}>{menuOpen ? <X size={18} strokeWidth={1.8} aria-hidden="true" /> : <Menu size={18} strokeWidth={1.8} aria-hidden="true" />}</button>
         </div>
       </nav>
       <div className={`mobileMenu ${menuOpen ? "isOpen" : ""}`} id="mobile-navigation">
