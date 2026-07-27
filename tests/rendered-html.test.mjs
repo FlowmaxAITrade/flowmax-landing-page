@@ -29,8 +29,8 @@ test("server-renders the finished Flowmax landing page", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>Flowmax — AI Agent 自动交易平台<\/title>/i);
-  assert.match(html, /让 AI 接管市场研究、/);
+  assert.match(html, /<title>FlowMax｜创建和运行你的 AI 交易策略团队<\/title>/);
+  assert.match(html, /创建和运行你的/);
   assert.match(html, /RESEARCH AGENT/);
   assert.match(html, /PM AGENT/);
   assert.match(html, /FORK &amp; VALIDATE/);
@@ -38,7 +38,10 @@ test("server-renders the finished Flowmax landing page", async () => {
   assert.match(html, /切换深浅色主题/);
   assert.match(html, /ABOUT FLOWMAX/);
   assert.match(html, /Flowmax 核心团队拥有华尔街量化交易/);
-  assert.match(html, /og\.png/);
+  assert.match(html, /og-1200\.jpg/);
+  assert.match(html, /name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/);
+  assert.match(html, /application\/ld\+json/);
+  assert.match(html, /"@type":"SoftwareApplication"/);
   assert.doesNotMatch(html, /codex-preview|Building your site|react-loading-skeleton/i);
 });
 
@@ -75,7 +78,7 @@ test("keeps the production design responsive and accessible", async () => {
   assert.match(page, /<details/);
   assert.match(layout, /lang="zh-CN"/);
   assert.match(layout, /flowmax-theme/);
-  assert.match(layout, /AI Agent 自动交易平台/);
+  assert.match(layout, /创建和运行你的 AI 交易策略团队/);
   assert.match(css, /@media \(max-width: 800px\)/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
   assert.match(css, /--primary:\s*#66e351/);

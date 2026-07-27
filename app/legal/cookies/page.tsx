@@ -1,2 +1,5 @@
 import ContentLayout from "../../content-layout";
+import type { Metadata } from "next";
+import { createPageMetadata } from "../../seo";
+export const metadata: Metadata = createPageMetadata({ title: "Cookie 政策｜FlowMax", description: "了解 FlowMax Cookie 政策的适用范围、Cookie 类型、用途与管理方式。本页面在正式发布前将由运营与法务团队完成审核。", path: "/legal/cookies" });
 export default function CookiesPage() { return <ContentLayout eyebrow="LEGAL & POLICY" title="Cookie 政策" intro="说明 Flowmax 如何使用 Cookie 与类似技术来提供、保护和改进服务。"><div className="prose legal"><p className="updated">最后更新：待法务确认</p><h2>什么是 Cookie</h2><p>Cookie 是网站存储在浏览器中的小型文本文件，可用于维持登录状态、记住偏好设置以及理解服务使用情况。</p><h2>我们使用的 Cookie 类型</h2><p>可能包括严格必要的 Cookie、偏好设置 Cookie、分析统计 Cookie 与营销 Cookie。实际类别、供应商和保存期限应以正式 Cookie 清单为准。</p><h2>如何管理 Cookie</h2><p>你可以通过浏览器设置管理部分 Cookie；如适用，网站会提供 Cookie 偏好设置入口。关闭严格必要的 Cookie 可能影响服务正常使用。</p><h2>政策更新与联系</h2><p>本页面将在运营主体、第三方服务、隐私邮箱和同意机制确认后发布正式版本。</p></div></ContentLayout>; }

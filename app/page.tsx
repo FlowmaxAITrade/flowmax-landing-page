@@ -1,6 +1,46 @@
 import SiteHeader from "./site-header";
 import SiteFooter from "./site-footer";
+import type { Metadata } from "next";
+import { createPageMetadata } from "./seo";
 import { ArrowRight, Bot, Check, ExternalLink, GitFork, Plus, Users, Workflow } from "lucide-react";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "FlowMax｜创建和运行你的 AI 交易策略团队",
+  description: "FlowMax 帮助你创建 AI 分析师与交易策略团队，结合市场研究、风险管理和执行流程，先在模拟环境中验证，再持续优化。",
+  path: "/",
+});
+
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "FlowMax",
+    url: "https://www.flowmax.com/",
+    logo: "https://www.flowmax.com/favicon.svg",
+    sameAs: [],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "FlowMax",
+    url: "https://www.flowmax.com/",
+    inLanguage: "zh-CN",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "FlowMax",
+    url: "https://www.flowmax.com/",
+    applicationCategory: "FinanceApplication",
+    operatingSystem: "Web",
+    description: "创建 AI 分析师与交易策略团队，并在模拟环境中完成研究、风险管理和验证。",
+    provider: {
+      "@type": "Organization",
+      name: "FlowMax",
+      url: "https://www.flowmax.com/",
+    },
+  },
+];
 
 const capabilityIcons = {
   "01": Bot,
@@ -111,6 +151,7 @@ const faqs = [
 export default function Home() {
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <SiteHeader />
 
       <section id="top" className="hero">
@@ -124,10 +165,7 @@ export default function Home() {
               <span className="liveDot" />
               AI AGENT AUTOMATED TRADING
             </div>
-            <h1>
-              让 AI 接管市场研究、
-              <span>策略与执行。</span>
-            </h1>
+            <h1>创建和运行你的 <span>AI 交易策略团队。</span></h1>
             <p>
               创建、验证和 Fork AI 分析师与交易策略。Flowmax 把实时市场分析、风险管理与订单执行连接成一套持续运行的 Agent 工作流。
             </p>
