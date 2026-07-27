@@ -110,39 +110,24 @@ summary {
   width: max-content;
 }
 
-.brandOrb {
-  position: relative;
+.brandMark {
   display: grid;
   place-items: center;
-  width: 32px;
-  height: 32px;
-  border: 1px solid rgba(102, 227, 81, 0.42);
-  border-radius: 50%;
-  background: rgba(102, 227, 81, 0.08);
-  box-shadow: inset 0 0 12px rgba(102, 227, 81, 0.12);
+  width: 34px;
+  height: 34px;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
-.brandOrb::before,
-.brandOrb::after {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 1px;
-  background: rgba(102, 227, 81, 0.58);
+.brandMark img {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.brandOrb::before { transform: rotate(45deg); }
-.brandOrb::after { transform: rotate(-45deg); }
-
-.brandOrb span {
-  position: relative;
-  z-index: 1;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--primary);
-  box-shadow: 0 0 12px rgba(102, 227, 81, 0.85);
-}
+.brandMarkDark { mix-blend-mode: screen; }
+.brandMarkLight { display: none; mix-blend-mode: multiply; }
 
 .brandName {
   font-size: 20px;
@@ -1438,16 +1423,8 @@ summary {
   box-shadow: 0 1px 0 rgba(11, 22, 19, 0.08);
 }
 
-[data-theme="light"] .brandOrb {
-  border-color: rgba(36, 92, 69, 0.45);
-  background: rgba(36, 92, 69, 0.12);
-  box-shadow: inset 0 0 12px rgba(36, 92, 69, 0.12);
-}
-
-[data-theme="light"] .brandOrb::before,
-[data-theme="light"] .brandOrb::after {
-  background: rgba(26, 77, 57, 0.58);
-}
+[data-theme="light"] .brandMarkDark { display: none; }
+[data-theme="light"] .brandMarkLight { display: block; }
 
 [data-theme="light"] .navLinks {
   border-color: rgba(11, 22, 19, 0.1);
