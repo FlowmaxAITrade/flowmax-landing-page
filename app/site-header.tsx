@@ -39,6 +39,7 @@ export default function SiteHeader() {
             <Image className="brandMarkLight" src="/flowmax-logo-mark-light.png" alt="" width={34} height={34} unoptimized />
           </span>
           <span className="brandName">Flowmax</span>
+          <Image className="brandWordmarkDark" src="/flowmax-wordmark-dark.png" alt="Flowmax" width={126} height={54} unoptimized />
         </Link>
         <div className="navLinks">
           {navigation.map(([label, href]) => <a className={isActive(href) ? "active" : undefined} href={href} key={href}>{label}</a>)}

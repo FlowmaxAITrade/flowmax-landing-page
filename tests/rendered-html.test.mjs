@@ -38,7 +38,7 @@ test("server-renders the finished Flowmax landing page", async () => {
   assert.match(html, /切换深浅色主题/);
   assert.match(html, /ABOUT FLOWMAX/);
   assert.match(html, /Flowmax 核心团队拥有华尔街量化交易/);
-  assert.match(html, /og-1200\.jpg/);
+  assert.match(html, /flowmax-og\.jpg/);
   assert.match(html, /name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/);
   assert.match(html, /application\/ld\+json/);
   assert.match(html, /"@type":"SoftwareApplication"/);
@@ -86,6 +86,7 @@ test("keeps the production design responsive and accessible", async () => {
   assert.match(css, /\[data-theme="light"\]/);
   assert.match(css, /\.mobileMenu/);
   assert.match(header, /aria-controls="mobile-navigation"/);
+  assert.match(header, /flowmax-wordmark-dark\.png/);
   assert.match(header, /window\.localStorage\.setItem/);
   assert.match(legacyPage, /redirect\("\/"\)/);
 });

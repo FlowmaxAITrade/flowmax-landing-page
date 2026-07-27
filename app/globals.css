@@ -135,6 +135,17 @@ summary {
   letter-spacing: -0.035em;
 }
 
+.brandWordmarkDark {
+  display: block;
+  width: 126px;
+  height: auto;
+}
+
+[data-theme="dark"] .brandMark,
+[data-theme="dark"] .brandName {
+  display: none;
+}
+
 .navLinks {
   display: flex;
   align-items: center;
@@ -1425,6 +1436,7 @@ summary {
 
 [data-theme="light"] .brandMarkDark { display: none; }
 [data-theme="light"] .brandMarkLight { display: block; }
+[data-theme="light"] .brandWordmarkDark { display: none; }
 
 [data-theme="light"] .navLinks {
   border-color: rgba(11, 22, 19, 0.1);

@@ -16,7 +16,7 @@ const structuredData = [
     "@type": "Organization",
     name: "FlowMax",
     url: "https://www.flowmax.com/",
-    logo: "https://www.flowmax.com/flowmax-logo-mark-dark.png",
+    logo: "https://www.flowmax.com/flowmax-wordmark-dark.png",
     sameAs: [],
   },
   {

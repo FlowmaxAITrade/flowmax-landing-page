@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const SITE_NAME = "FlowMax";
 export const SITE_URL = "https://www.flowmax.com";
-export const OG_IMAGE_PATH = "/og-1200.jpg";
+export const OG_IMAGE_PATH = "/flowmax-og.jpg";
 
 const previewRules = {
   "max-image-preview": "large" as const,
