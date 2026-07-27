@@ -1,5 +1,9 @@
 import { ArrowRight, Plus } from "lucide-react";
+import type { Metadata } from "next";
 import ContentLayout from "../content-layout";
+import { createPageMetadata } from "../seo";
+
+export const metadata: Metadata = createPageMetadata({ title: "FlowMax 常见问题｜AI 交易策略使用说明", description: "了解 FlowMax 中分析师、策略、Fork、部署和模拟验证的常见问题，帮助你在开始前明确产品能力、风险边界与使用方法。", path: "/faq" });
 
 const faqs = [
   ["分析师和策略有什么区别？", "分析师负责研究市场并输出观点；策略将一个或多个分析师信号与策略目标、风险规则结合，生成决策。"],

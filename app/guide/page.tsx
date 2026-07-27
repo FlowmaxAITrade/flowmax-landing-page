@@ -1,5 +1,9 @@
 import { ArrowRight, Check } from "lucide-react";
+import type { Metadata } from "next";
 import ContentLayout from "../content-layout";
+import { createPageMetadata } from "../seo";
+
+export const metadata: Metadata = createPageMetadata({ title: "FlowMax 使用指南｜从分析师到 AI 交易策略", description: "按照 FlowMax 使用指南创建分析师和交易策略，了解从市场研究、参数配置到模拟验证与持续管理的完整产品使用流程。", path: "/guide" });
 
 const steps = [
   ["01", "认识两类 Agent", "Research Agent 负责研究与输出信号；PM Agent 将信号、目标和风险规则组合成决策。"],

@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { headers } from "next/headers";
+import { createPageMetadata, SITE_URL } from "./seo";
 import "./globals.css";
 
 const themeScript = `
@@ -25,36 +25,26 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export async function generateMetadata(): Promise<Metadata> {
-  const requestHeaders = await headers();
-  const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host") ?? "localhost:3000";
-  const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
-  const baseUrl = new URL(`${protocol}://${host}`);
-  const imageUrl = new URL("/og.png", baseUrl).toString();
-
-  return {
-    metadataBase: baseUrl,
-    title: "Flowmax — AI Agent 自动交易平台",
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  ...createPageMetadata({
+    title: "FlowMax｜创建和运行你的 AI 交易策略团队",
     description:
-      "创建、验证和 Fork AI 分析师与交易策略，让 AI 持续完成市场研究、风险管理与交易执行。",
-    icons: {
-      icon: "/favicon.svg",
-      shortcut: "/favicon.svg",
-    },
-    openGraph: {
-      title: "Flowmax — AI Agent 自动交易平台",
-      description: "创建、验证和 Fork AI 分析师与交易策略。",
-      type: "website",
-      images: [{ url: imageUrl, width: 1536, height: 1024, alt: "Flowmax AI Agent 自动交易平台" }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: "Flowmax — AI Agent 自动交易平台",
-      description: "Research → Strategy → Risk Control → Execution",
-      images: [imageUrl],
-    },
-  };
-}
+      "FlowMax 帮助你创建 AI 分析师与交易策略团队，结合市场研究、风险管理和执行流程，先在模拟环境中验证，再持续优化。",
+    path: "/",
+  }),
+  applicationName: "FlowMax",
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  colorScheme: "dark light",
+};
 
 export default function RootLayout({
   children,

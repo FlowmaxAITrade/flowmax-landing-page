@@ -1,3 +1,6 @@
 import ContentLayout from "../../content-layout";
+import type { Metadata } from "next";
+import { createPageMetadata } from "../../seo";
+export const metadata: Metadata = createPageMetadata({ title: "创建 AI 交易策略指南｜FlowMax", description: "学习在 FlowMax 中组合分析师信号、设置资产范围、执行频率和风险规则，先通过模拟环境验证 AI 交易策略的行为。", path: "/guide/create-strategy" });
 const rows = [["策略目标", "稳健保值、波段交易、趋势跟踪或套利对冲等，以当前产品选项为准。"], ["风险风格", "保守、平衡或激进。首次使用建议选择保守。"], ["交易标的", "仅选择当前页面已开放的标的。"], ["决策频率", "高频不一定更好，应与策略逻辑和可承受成本匹配。"], ["止盈止损", "同时考虑波动、杠杆、仓位上限和最大可承受损失。"], ["分析师信号", "先绑定少量、逻辑清楚且互补的 Research Agent。"]];
 export default function StrategyGuide() { return <ContentLayout eyebrow="GUIDE / 02" title="创建你的 PM Agent" intro="把研究信号、策略目标与风险规则组合成可以持续验证的策略工作流。"><div className="prose"><p>入口：<code>AI 策略</code> 或 <code>我的 AI → 创建策略</code>。完成配置后，再确认策略名称、可见性和运行环境。</p></div><div className="settingsTable">{rows.map(([title, copy], index) => <div key={title}><span>{String(index + 1).padStart(2, "0")}</span><strong>{title}</strong><p>{copy}</p></div>)}</div><div className="notice"><strong>第一次运行建议</strong><p>使用私有和模拟方式；从一个熟悉的主流标的开始；启用明确止损和仓位上限。然后在“我的 AI → 策略”中查看部署状态和后续决策。</p></div></ContentLayout>; }
