@@ -35,8 +35,8 @@ export const metadata: Metadata = {
   }),
   applicationName: "FlowMax",
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: "/flowmax-logo-mark-dark.png",
+    shortcut: "/flowmax-logo-mark-dark.png",
   },
 };
 

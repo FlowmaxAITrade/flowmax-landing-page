@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ArrowRight, Menu, Moon, Sun, X } from "lucide-react";
 
@@ -33,7 +34,10 @@ export default function SiteHeader() {
     <header className="siteHeader">
       <nav className="nav shell" aria-label="主导航">
         <Link className="brand" href="/" aria-label="Flowmax 首页" onClick={() => setMenuOpen(false)}>
-          <span className="brandOrb" aria-hidden="true"><span /></span>
+          <span className="brandMark" aria-hidden="true">
+            <Image className="brandMarkDark" src="/flowmax-logo-mark-dark.png" alt="" width={34} height={34} unoptimized />
+            <Image className="brandMarkLight" src="/flowmax-logo-mark-light.png" alt="" width={34} height={34} unoptimized />
+          </span>
           <span className="brandName">Flowmax</span>
         </Link>
         <div className="navLinks">
