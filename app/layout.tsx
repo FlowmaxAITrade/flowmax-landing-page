@@ -37,6 +37,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/flowmax-logo-mark-dark.png",
     shortcut: "/flowmax-logo-mark-dark.png",
+    apple: "/flowmax-logo-mark-light.png",
   },
 };
 
